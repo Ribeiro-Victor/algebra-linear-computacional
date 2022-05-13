@@ -36,3 +36,18 @@ def get_auxiliar_matrix(matrix, j):
         auxiliar[row] = auxiliar[row][:j] + auxiliar[row][j+1:]
 
     return auxiliar
+
+def check_symmetry(matrix):
+
+    number_of_rows = len(matrix)
+    number_of_columns = len(matrix[0])
+
+    if(number_of_rows != number_of_columns):
+        return False
+
+    for i in range(number_of_rows):
+        for j in range(number_of_columns):
+            if(matrix[i][j]!=matrix[j][i]):
+                return False
+    
+    return True

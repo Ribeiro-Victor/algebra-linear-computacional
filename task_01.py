@@ -1,5 +1,6 @@
 from decimal import DivisionByZero
-from utils import read_matrix, print_matrix, matrix_determinant
+from tabnanny import check
+from utils import check_symmetry, read_matrix, print_matrix, matrix_determinant
 import copy
 import math
 
@@ -28,6 +29,33 @@ def lu_decomposition(matrix):
             for i in range(k+1, number_of_columns):
                 result[i][j] = result[i][j]-result[i][k]*result[k][j]
 
+    return result
+
+def cholesky_decomposition(matrix):
+
+    number_of_rows = len(matrix)
+    number_of_columns = len(matrix[0])
+
+    if(number_of_columns != number_of_rows):
+        return "ERRO: A matriz deve ser quadrada para realizar este método."
+
+    if(not check_symmetry(matrix)):
+        return "ERRO: A matriz deve ser simétrica para realizar este método."
+
+    result = copy.deepcopy(matrix)
+    #result = matrix
+
+    for i in range(number_of_rows):
+        summation = sum(result[i][k]**2 for k in range(i))
+        result[i][i] = result[i][i] - summation
+        if(result[i][i] <= 0):
+            return "ERRO: A matriz deve ser positiva definida para realizar este método."
+        else:
+            result[i][i] = result[i][i] ** 0.5
+        for j in range(i+1, number_of_columns):
+            summation = sum(result[i][k]*result[j][k] for k in range(i))
+            result[j][i] = (result[i][j] - summation)/result[i][i]
+    
     return result
 
 if __name__ == "__main__":
