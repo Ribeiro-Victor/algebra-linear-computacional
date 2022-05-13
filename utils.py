@@ -98,5 +98,13 @@ def backward_substitution(matrix_u, vector_b):
     
     return vector_x
 
+def transpose_matrix(matrix):
+    result = [[0.0] * len(matrix) for _ in range(len(matrix[0]))]
+
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            result[j][i] = matrix[i][j]
+
+    return result
 
 
