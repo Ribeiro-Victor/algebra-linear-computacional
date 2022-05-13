@@ -1,1 +1,2 @@
-entrada.txt
+*.txt
+__pycache__
