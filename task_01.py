@@ -1,6 +1,6 @@
 from decimal import DivisionByZero
 from tabnanny import check
-from utils import check_symmetry, read_matrix, print_matrix, matrix_determinant
+from utils import backward_substitution, print_vector, check_symmetry, forward_substitution, read_matrix, print_matrix, matrix_determinant, transpose_matrix
 import copy
 import math
 
@@ -57,6 +57,28 @@ def cholesky_decomposition(matrix):
             result[j][i] = (result[i][j] - summation)/result[i][i]
     
     return result
+
+def solve_system(matrix, vector, use_lu_method):
+    if(use_lu_method):
+        matrix_lu = lu_decomposition(matrix)
+        if(isinstance(matrix_lu, str)):
+            return matrix_lu
+        
+        vector_ly = forward_substitution(matrix_lu, vector)
+
+        vector_x = backward_substitution(matrix_lu, vector_ly)
+        
+        return vector_x
+    else:
+        matrix_lu = cholesky_decomposition(matrix)
+        if(isinstance(matrix_lu, str)):
+            return matrix_lu
+        
+        vector_ly = forward_substitution(matrix_lu, vector, flag=False)
+
+        vector_x = backward_substitution(transpose_matrix(matrix_lu), vector_ly)
+
+        return vector_x
 
 if __name__ == "__main__":
     n = int(input("Entre com a ordem do sistema de equacoes: "))
