@@ -1,3 +1,4 @@
+from decimal import DivisionByZero
 from utils import read_matrix, print_matrix, matrix_determinant
 import copy
 
@@ -7,7 +8,7 @@ def lu_decomposition(matrix):
     number_of_columns = len(matrix[0])
 
     if(number_of_columns != number_of_rows):
-        return("A matriz deve ser quadrada para realizar este metodo.")
+        return "ERRO: A matriz deve ser quadrada para realizar este método." 
 
     #if(matrix_determinant(matrix)==0):
     #    return("A matriz deve ser não singular para realizar este metodo.")
@@ -16,7 +17,10 @@ def lu_decomposition(matrix):
 
     for k in range(number_of_columns):
         for i in range(k+1, number_of_columns):
-            result[i][k] = result[i][k]/result[k][k]
+            try:
+                result[i][k] = result[i][k]/result[k][k]
+            except DivisionByZero:
+                return "ERRO: Pivô nulo. Decomposição LU não é possível sem pivotamento."
 
         for j in range(k+1, number_of_columns):
             for i in range(k+1, number_of_columns):
