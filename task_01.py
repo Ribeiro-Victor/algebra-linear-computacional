@@ -1,6 +1,7 @@
 from decimal import DivisionByZero
 from utils import read_matrix, print_matrix, matrix_determinant
 import copy
+import math
 
 def lu_decomposition(matrix):
 
@@ -13,7 +14,8 @@ def lu_decomposition(matrix):
     #if(matrix_determinant(matrix)==0):
     #    return("A matriz deve ser não singular para realizar este metodo.")
     
-    result = copy.deepcopy(matrix)
+    #result = copy.deepcopy(matrix)
+    result = matrix
 
     for k in range(number_of_columns):
         for i in range(k+1, number_of_columns):
@@ -25,7 +27,7 @@ def lu_decomposition(matrix):
         for j in range(k+1, number_of_columns):
             for i in range(k+1, number_of_columns):
                 result[i][j] = result[i][j]-result[i][k]*result[k][j]
-    
+
     return result
 
 if __name__ == "__main__":
