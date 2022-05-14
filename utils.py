@@ -1,4 +1,6 @@
 import copy
+from decimal import *
+from mailbox import linesep
 
 def read_matrix(file_path):
     with open(file_path, 'r') as f:
@@ -125,7 +127,7 @@ def diagonally_dominant(matrix):
                 line_summation += abs(matrix[i][j])
                 column_summation += abs(matrix[j][i])
 
-        if(matrix[i][i] < line_summation or matrix[i][i] < column_summation):
+        if(abs(matrix[i][i]) < line_summation or abs(matrix[i][i]) < column_summation):
             return False
     
     return True
