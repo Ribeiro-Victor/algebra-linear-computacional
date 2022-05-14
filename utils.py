@@ -11,11 +11,11 @@ def read_vector(file_path):
     return vector
 
 def print_matrix(matrix):
-    print('\n'.join([''.join(['{:10.2f}'.format(item) for item in row]) 
+    print('\n'.join([''.join(['{:10.3f}'.format(item) for item in row]) 
       for row in matrix]))
     
 def print_vector(vector):
-    print('\n'.join('{:10.2f}'.format(item) for item in vector))
+    print('\n'.join('{:10.3f}'.format(item) for item in vector))
 
 def matrix_determinant(matrix):
     #Calcula determinante a partir da expansao de cofatores
@@ -107,4 +107,25 @@ def transpose_matrix(matrix):
 
     return result
 
+def vector_subtraction(x, y):
+    return [x[i]-y[i] for i in range(len(x))]
 
+def vector_euclidean_norm(x):
+    return (sum(x[i]**2 for i in range(len(x))))**0.5
+
+def diagonally_dominant(matrix):
+
+    for i in range(len(matrix)):
+
+        line_summation = 0
+        column_summation = 0
+        
+        for j in range(len(matrix)):
+            if(i!=j):
+                line_summation += abs(matrix[i][j])
+                column_summation += abs(matrix[j][i])
+
+        if(matrix[i][i] < line_summation or matrix[i][i] < column_summation):
+            return False
+    
+    return True
