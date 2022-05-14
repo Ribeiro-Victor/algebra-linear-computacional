@@ -1,6 +1,6 @@
 from decimal import DivisionByZero
 from tabnanny import check
-from utils import backward_substitution, print_vector, check_symmetry, forward_substitution, read_matrix, print_matrix, matrix_determinant, transpose_matrix
+from utils import backward_substitution, diagonally_dominant, print_vector, check_symmetry, forward_substitution, read_matrix, print_matrix, matrix_determinant, transpose_matrix, vector_euclidean_norm, vector_subtraction
 import copy
 import math
 
@@ -79,6 +79,40 @@ def solve_system(matrix, vector, use_lu_method):
         vector_x = backward_substitution(transpose_matrix(matrix_lu), vector_ly)
 
         return vector_x
+
+def iterative_jacobi(matrix_a, vector_b, tol):
+
+    if(not diagonally_dominant(matrix_a)):
+        return "ERROR: Solução não converge, matriz não é diagonal dominante."
+
+    initial_solution = [1.0] * len(vector_b)
+    next_solution = [0.0] * len(vector_b)
+
+    residue = 1
+    iteration = 0
+
+    while(residue > tol):
+
+        for i in range(len(next_solution)):
+            summation = 0.0
+
+            for j in range(len(next_solution)):
+                if(j!=i):
+                    summation += (-1)*matrix_a[i][j]*initial_solution[j]
+    
+            next_solution[i] = (vector_b[i] + summation)/matrix_a[i][i]
+
+        residue = vector_euclidean_norm(vector_subtraction(next_solution, initial_solution))\
+                /vector_euclidean_norm(next_solution)
+        
+        for i in range(len(next_solution)):
+            initial_solution[i] = next_solution[i]
+        
+        iteration += 1
+
+    print_vector(next_solution)
+    print("iteration: ", iteration)
+    print("residue: ", "{:.2e}".format(residue))
 
 if __name__ == "__main__":
     n = int(input("Entre com a ordem do sistema de equacoes: "))
