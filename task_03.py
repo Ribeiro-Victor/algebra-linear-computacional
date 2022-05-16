@@ -1,7 +1,4 @@
-
 from task_01 import solve_system
-from utils import print_matrix, print_vector
-
 
 def linear_regression(points):
     matrix_A = [[0.0] * 2 for _ in range(2)]
@@ -23,8 +20,26 @@ def linear_regression(points):
     
     return vector_X
 
-        
-    
+def lagrange_interpolation(points, x, n):
 
+    phi_functions = [0.0] * n
+    for i in range(n):
+
+        numerator_product = 1.0
+        denominator_product = 1.0
+
+        for k in range(n):
+            
+            if(k!=i):
+                numerator_product *= x - (points[k][0])
+                denominator_product *= (points[i][0]) - (points[k][0])
+        
+        phi_functions[i] = (numerator_product/denominator_product)
+    
+    return sum(phi_functions[i] * points[i][1] for i in range(n))
+    
 if __name__ == "__main__":
+
+    
     linear_regression([[1.0,2.0],[2.0,3.5],[3.0,6.5]])
+    print(lagrange_interpolation([[-2, -27], [0,-1], [1, 0]], 10, 3))
