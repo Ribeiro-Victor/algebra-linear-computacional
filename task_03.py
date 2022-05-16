@@ -40,6 +40,30 @@ def lagrange_interpolation(points, x, n):
     
 if __name__ == "__main__":
 
+    print("""
+    Interpolação (ICOD = 1)
+    Regressão (ICOD = 2).
+    """)
+    icod = int(input("Entre com o ICOD da operacao: "))
+    n = int(input("Entre com o número de pares de ponto: "))
+    points = []
+    with open('points.txt', 'r') as file:
+        content = file.readlines()
+        for row in content:
+            pair = [float(num) for num in row.split(' ')]
+            points.append(pair)
+    x = int(input("Entre com a coordenada(x) do ponto que se deseja calcular o valor de y: "))
+
+    if(icod==1):
+        y = lagrange_interpolation(points, x, n)
+    elif(icod==2):
+        y = linear_regression([[1.0,2.0],[2.0,3.5],[3.0,6.5]])
+    else:
+        y = "ICOD inválido."
     
-    linear_regression([[1.0,2.0],[2.0,3.5],[3.0,6.5]])
-    print(lagrange_interpolation([[-2, -27], [0,-1], [1, 0]], 10, 3))
+    with open('output3.txt', 'w') as file:
+        buffer = f"f({x}) = {y}"
+        file.write(buffer)
+        print(buffer)
+
+    
