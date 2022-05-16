@@ -1,11 +1,11 @@
 from task_01 import solve_system
 
-def linear_regression(points):
+def linear_regression(points, x, n):
     matrix_A = [[0.0] * 2 for _ in range(2)]
     vector_C = [0.0, 0.0]
 
-    matrix_A[0][0] = len(points)
-    for i in range(len(points)):
+    matrix_A[0][0] = n
+    for i in range(n):
         matrix_A[0][1] += points[i][0]
         matrix_A[1][0] += points[i][0]
         matrix_A[1][1] += points[i][0] ** 2
@@ -18,7 +18,7 @@ def linear_regression(points):
     else:
         print("Reta encontrada:", vector_X[1], "x -", abs(vector_X[0]))
     
-    return vector_X
+    return vector_X[0] + vector_X[1] * x
 
 def lagrange_interpolation(points, x, n):
 
@@ -52,12 +52,12 @@ if __name__ == "__main__":
         for row in content:
             pair = [float(num) for num in row.split(' ')]
             points.append(pair)
-    x = int(input("Entre com a coordenada(x) do ponto que se deseja calcular o valor de y: "))
+    x = float(input("Entre com a coordenada(x) do ponto que se deseja calcular o valor de y: "))
 
     if(icod==1):
         y = lagrange_interpolation(points, x, n)
     elif(icod==2):
-        y = linear_regression([[1.0,2.0],[2.0,3.5],[3.0,6.5]])
+        y = linear_regression(points, x ,n)
     else:
         y = "ICOD inválido."
     
