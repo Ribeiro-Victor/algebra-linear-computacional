@@ -103,7 +103,7 @@ def iterative_jacobi(matrix_a, vector_b, tol):
                 if(j!=i):
                     summation += (-1)*matrix_a[i][j]*initial_solution[j]
     
-            next_solution[i] = round((vector_b[i] + summation)/matrix_a[i][i], 3)
+            next_solution[i] = (vector_b[i] + summation)/matrix_a[i][i]
 
         iteration += 1
         residue = vector_euclidean_norm(vector_subtraction(next_solution, initial_solution))\
@@ -140,7 +140,7 @@ def iterative_gauss_seidel(matrix_a, vector_b, tol):
                 if(j<i):
                     summation += (-1)*matrix_a[i][j]*next_solution[j]
     
-            next_solution[i] = round((vector_b[i] + summation)/matrix_a[i][i],3)
+            next_solution[i] = (vector_b[i] + summation)/matrix_a[i][i]
 
         iteration += 1
         residue = vector_euclidean_norm(vector_subtraction(next_solution, initial_solution))\
@@ -154,7 +154,7 @@ def iterative_gauss_seidel(matrix_a, vector_b, tol):
     return result
         
 if __name__ == "__main__":
-    #n = int(input("Entre com a ordem do sistema de equacoes: "))
+    n = int(input("Entre com a ordem do sistema de equacoes: "))
     print("""
     Decomposição LU (ICOD = 1)
     Decomposição de Cholesky (ICOD = 2)
