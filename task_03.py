@@ -22,21 +22,17 @@ def linear_regression(points, x, n):
 
 def lagrange_interpolation(points, x, n):
 
-    phi_functions = [0.0] * n
+    phi = 1.0
+    y = 0.0
     for i in range(n):
-
-        numerator_product = 1.0
-        denominator_product = 1.0
-
         for k in range(n):
-            
             if(k!=i):
-                numerator_product *= x - (points[k][0])
-                denominator_product *= (points[i][0]) - (points[k][0])
+                phi *= (x - (points[k][0])) / (points[i][0] - points[k][0])
         
-        phi_functions[i] = (numerator_product/denominator_product)
+        y += phi * points[i][1]
+        phi = 1.0
     
-    return sum(phi_functions[i] * points[i][1] for i in range(n))
+    return y
     
 if __name__ == "__main__":
 
