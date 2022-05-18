@@ -1,6 +1,6 @@
 from decimal import DivisionByZero
 from task01.method import Method
-from utils import backward_substitution, forward_substitution, print_matrix
+from utils.utils import backward_substitution, forward_substitution, print_matrix
 
 class LU_Method(Method):
     def decompose(self):

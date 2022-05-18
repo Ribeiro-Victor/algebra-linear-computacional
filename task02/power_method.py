@@ -1,5 +1,5 @@
 from task02.method import Method
-from utils import biggest_vector_element, multiply_matrix_vector
+from utils.utils import biggest_vector_element, multiply_matrix_vector
 
 class Power_Method(Method):
     allows_determinant_calc = False

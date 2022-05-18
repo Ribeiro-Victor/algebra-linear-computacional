@@ -1,5 +1,5 @@
 from task01.method import Method
-from utils import backward_substitution, forward_substitution, print_matrix, check_symmetry, transpose_matrix
+from utils.utils import backward_substitution, forward_substitution, print_matrix, check_symmetry, transpose_matrix
 
 class Cholesky_Method(Method):
     def decompose(self):

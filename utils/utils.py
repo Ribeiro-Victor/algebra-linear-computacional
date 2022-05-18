@@ -1,6 +1,7 @@
 import copy
 from decimal import *
 from mailbox import linesep
+import math
 
 def read_matrix(file_path):
     with open(file_path, 'r') as f:
@@ -131,3 +132,64 @@ def diagonally_dominant(matrix):
             return False
     
     return True
+def multiply_matrix_vector(a, b):
+    number_of_rows = len(a)
+    number_of_columns = len(b)
+    result = [0.0 for _ in range(number_of_columns)] 
+    for i in range(number_of_rows):
+            for j in range(number_of_columns):
+                result[i] += a[i][j] * b[j]
+    return result
+
+
+def multiply_matrixes(a, b):
+    number_of_rows = len(a)
+    number_of_columns = len(b[0])
+    result = [[0.0 for _ in range(number_of_columns)] for _ in range(number_of_rows)]
+    for i in range(number_of_rows):
+            for j in range(number_of_columns):
+                for k in range(len(b)):
+                    result[i][j] += a[i][k] * b[k][j]
+    return result
+
+def biggest_vector_element(vector):
+    biggest = vector[0]
+    for i in range(len(vector)):
+        if(vector[i]>biggest):
+            biggest = vector[i]
+    return biggest
+
+def biggest_element_outof_diagonal(matrix):
+    biggest = -1
+    number_of_rows = len(matrix)
+    number_of_columns = len(matrix[0])
+    if(number_of_rows != number_of_columns):
+        raise Exception("Nao é possivel calcular para matrizes não quadradas!")
+    for i in range(number_of_rows):
+        for j in range(number_of_columns):
+            if (i!=j and abs(matrix[i][j]) > biggest):
+                biggest = abs(matrix[i][j])
+                index = [i, j]
+    return index
+
+def calculate_p_matrix(matrix_a, index):
+    order = len(matrix_a)
+    matrix_p = [[0.0 for _ in range(order)] for _ in range(order)]
+    for i in range(order):
+        matrix_p[i][i] = 1
+
+    phi = math.pi/4
+    if(matrix_a[index[0]][index[0]] != matrix_a[index[1]][index[1]]):
+        denominator = matrix_a[index[0]][index[0]] - matrix_a[index[1]][index[1]]
+        phi = (0.5) * math.atan( (2*matrix_a[index[0]][index[1]]) / denominator )
+    
+    matrix_p[index[0]][index[1]] = (-1)*math.sin(phi)
+    matrix_p[index[1]][index[0]] = math.sin(phi)
+    matrix_p[index[0]][index[0]] = math.cos(phi)
+    matrix_p[index[1]][index[1]] = math.cos(phi)
+
+    return matrix_p
+
+
+
+

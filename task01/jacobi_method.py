@@ -1,5 +1,5 @@
 from task01.method import IterativeMethod
-from utils import diagonally_dominant, vector_euclidean_norm, vector_subtraction
+from utils.utils import diagonally_dominant, vector_euclidean_norm, vector_subtraction
 
 class Jacobi_Method(IterativeMethod):
     def solve(self):
