@@ -7,7 +7,7 @@ class Method:
         self.matrix_A = matrix_A
         self.vector_B = vector_B
         if (self.determinant_calc and not self.allows_determinant_calc):
-            print('ERRO: Não é possível calcular o determinante nessa decomposição.')
+            print("WARNING: Não é possível calcular o determinante nessa decomposição.")
     
     def solve(self):
         pass

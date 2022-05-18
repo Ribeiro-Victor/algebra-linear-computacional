@@ -7,16 +7,16 @@ class Cholesky_Method(Method):
         number_of_columns = len(self.matrix_A[0])
 
         if(number_of_columns != number_of_rows):
-            return "ERRO: A matriz deve ser quadrada para realizar este método."
+            raise Exception("ERRO: A matriz deve ser quadrada para realizar este método.")
 
         if(not check_symmetry(self.matrix_A)):
-            return "ERRO: A matriz deve ser simétrica para realizar este método."
+            raise Exception("ERRO: A matriz deve ser simétrica para realizar este método.")
 
         for i in range(number_of_rows):
             summation = sum(self.matrix_A[i][k]**2 for k in range(i))
             self.matrix_A[i][i] = self.matrix_A[i][i] - summation
             if(self.matrix_A[i][i] <= 0):
-                return "ERRO: A matriz deve ser positiva definida para realizar este método."
+                raise Exception("ERRO: A matriz deve ser positiva definida para realizar este método.")
             else:
                 self.matrix_A[i][i] = self.matrix_A[i][i] ** 0.5
             for j in range(i+1, number_of_columns):

@@ -8,14 +8,14 @@ class LU_Method(Method):
         number_of_columns = len(self.matrix_A[0])
 
         if(number_of_columns != number_of_rows):
-            return "ERRO: A matriz deve ser quadrada para realizar este método." 
+            raise Exception("ERRO: A matriz deve ser quadrada para realizar este método.")
 
         for k in range(number_of_columns):
             for i in range(k+1, number_of_columns):
                 try:
                     self.matrix_A[i][k] = self.matrix_A[i][k]/self.matrix_A[k][k]
                 except DivisionByZero:
-                    return "ERRO: Pivô nulo. Decomposição LU não é possível sem pivotamento."
+                    raise Exception("ERRO: Pivô nulo. Decomposição LU não é possível sem pivotamento.")
 
             for j in range(k+1, number_of_columns):
                 for i in range(k+1, number_of_columns):
