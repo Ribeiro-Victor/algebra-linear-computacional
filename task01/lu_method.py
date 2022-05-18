@@ -24,8 +24,8 @@ class LU_Method(Method):
     
     def solve(self):
         self.decompose()
-        print("Matriz LU:")
-        print_matrix(self.matrix_A)
+        #print("Matriz LU:")
+        #print_matrix(self.matrix_A)
         
         determinant = None
         if (self.determinant_calc):

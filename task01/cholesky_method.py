@@ -27,8 +27,8 @@ class Cholesky_Method(Method):
 
     def solve(self):
         self.decompose()
-        print("Matriz LL^t:")
-        print_matrix(self.matrix_A)
+        #print("Matriz LL^t:")
+        #print_matrix(self.matrix_A)
         
         determinant = None
         if (self.determinant_calc):
