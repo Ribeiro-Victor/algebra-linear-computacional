@@ -1,6 +1,4 @@
-import sys
 import numpy as np
-from sqlalchemy import func
 
 class NL_System:
 
