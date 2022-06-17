@@ -1,15 +1,18 @@
 from P1.task01.task01 import run as run_taskp1_01
 from P1.task02.task02 import run as run_taskp1_02
 from P1.task03.task03 import run as run_taskp1_03
+from P2.task01.task01 import run as run_taskp2_01
 
 task_map = {
     11: run_taskp1_01,
     12: run_taskp1_02,
-    13: run_taskp1_03
+    13: run_taskp1_03,
+    21: run_taskp2_01
 }
 
 if __name__ == '__main__':
     print("""Codificação das tasks:
+    
     11: P1 - Task 01
     12: P1 - Task 02
     13: P1 - Task 03
