@@ -1,4 +1,4 @@
-from task03.method import Method
+from P1.task03.method import Method
 
 class Interpolation(Method):
     def solve(self):

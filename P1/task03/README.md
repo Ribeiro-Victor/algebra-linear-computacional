@@ -1,4 +1,4 @@
-# Task 03
+# P1 - Task 03
 
 A terceira task é um programa para realizar o cálculo de o valor aproximado de uma função num determinando ponto. Nesse programa, é possível resolver o sistema a partir dos seguintes métodos de solução:
 
@@ -26,5 +26,5 @@ output = output.txt
 
 ## Executando o programa
 
-Para executar o programa, basta realizar o procedimento descrito na [página inicial](../README.md) do projeto.
+Para executar o programa, basta realizar o procedimento descrito na [página inicial](../../README.md) do projeto.
 

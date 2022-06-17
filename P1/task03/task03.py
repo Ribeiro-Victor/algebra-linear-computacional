@@ -1,5 +1,5 @@
-from task03.interpolation import Interpolation
-from task03.regression import Regression
+from P1.task03.interpolation import Interpolation
+from P1.task03.regression import Regression
 import configparser
 
 icod_map = {
@@ -7,7 +7,7 @@ icod_map = {
     2: Regression
 }
 def run():
-    with open("task03/input.txt", "r") as file:
+    with open("P1/task03/input.txt", "r") as file:
         parser_string = '[INPUT]\n' + file.read()
     parser = configparser.ConfigParser()
     parser.read_string(parser_string)
@@ -23,7 +23,7 @@ def run():
 
     ChoosenMethod = icod_map[icod]
     points = []
-    with open("task03/"+input_path_points, "r") as file:
+    with open("P1/task03/"+input_path_points, "r") as file:
         content = file.readlines()
         for row in content:
             pair = [float(num) for num in row.split(' ')]
@@ -37,8 +37,8 @@ def run():
 
     y = methodClass.solve()
     
-    with open("task03/"+output_path, "w") as file:
+    with open("P1/task03/"+output_path, "w") as file:
         buffer = f"f({x}) = {y}"
         file.write(buffer)
     
-    print("Task03 executada com sucesso. Saída disponível em: task03/"+output_path)
+    print("P1 - Task 03 executada com sucesso. Saída disponível em: P1/task03/"+output_path)

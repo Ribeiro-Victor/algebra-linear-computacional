@@ -1,4 +1,4 @@
-from task01.method import Method
+from P1.task01.method import Method
 from utils.utils import backward_substitution, forward_substitution, print_matrix, check_symmetry, transpose_matrix
 
 class Cholesky_Method(Method):

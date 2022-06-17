@@ -1,5 +1,5 @@
-from task02.jacobi_method import Jacobi_Method
-from task02.power_method import Power_Method
+from P1.task02.jacobi_method import Jacobi_Method
+from P1.task02.power_method import Power_Method
 from utils.utils import read_matrix
 import configparser
 
@@ -9,7 +9,7 @@ icod_map = {
 }
 
 def run():
-    with open("task02/input.txt", "r") as file:
+    with open("P1/task02/input.txt", "r") as file:
         parser_string = '[INPUT]\n' + file.read()
     parser = configparser.ConfigParser()
     parser.read_string(parser_string)
@@ -25,7 +25,7 @@ def run():
         raise Exception("ERROR: Arquivo de input com erro.")
 
     ChoosenMethod = icod_map[icod]
-    matrix_A = read_matrix("task02/"+input_path_A)
+    matrix_A = read_matrix("P1/task02/"+input_path_A)
 
     methodClass = ChoosenMethod(
         order=order,
@@ -35,10 +35,10 @@ def run():
     )
     solution = methodClass.solve()
     
-    with open("task02/"+output_path, "w") as file:
+    with open("P1/task02/"+output_path, "w") as file:
         file.write(f"Autovalores: {solution['eigenvalue']}\n")
         file.write(f"Autovetores: {solution['eigenvector']}\n")
         file.write(f"Determinante: {solution.get('determinant', 'N/A')}\n")
         file.write(f"Número de iterações para convergência: {solution.get('numberofIterations', 'N/A')}\n")
     
-    print("Task02 executada com sucesso. Saída disponível em: task02/"+output_path)
+    print("P1 - Task02 executada com sucesso. Saída disponível em: P1/task02/"+output_path)

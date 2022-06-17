@@ -1,4 +1,4 @@
-# Task 01
+# P1 - Task 01
 
 A primeira task é um programa para realizar a solução de um sistema de equações lineares e calcular o determinante da matriz nos procedimentos não iterativos. Nesse programa, é possível resolver o sistema a partir dos seguintes métodos de solução:
 
@@ -32,5 +32,5 @@ output = output.txt
 
 ## Executando o programa
 
-Para executar o programa, basta realizar o procedimento descrito na [página inicial](../README.md) do projeto.
+Para executar o programa, basta realizar o procedimento descrito na [página inicial](../../README.md) do projeto.
 

@@ -1,4 +1,4 @@
-from task02.method import Method
+from P1.task02.method import Method
 from utils.utils import check_symmetry, multiply_matrixes, biggest_element_outof_diagonal, calculate_p_matrix, transpose_matrix
 
 class Jacobi_Method(Method):

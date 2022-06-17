@@ -1,4 +1,4 @@
-from task02.method import Method
+from P1.task02.method import Method
 from utils.utils import biggest_vector_element, multiply_matrix_vector
 
 class Power_Method(Method):

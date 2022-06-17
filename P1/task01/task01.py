@@ -1,8 +1,8 @@
-from task01.method import IterativeMethod
-from task01.lu_method import LU_Method
-from task01.cholesky_method import Cholesky_Method
-from task01.jacobi_method import Jacobi_Method
-from task01.gauss_seidel_method import Gauss_Seidel_Method
+from P1.task01.method import IterativeMethod
+from P1.task01.lu_method import LU_Method
+from P1.task01.cholesky_method import Cholesky_Method
+from P1.task01.jacobi_method import Jacobi_Method
+from P1.task01.gauss_seidel_method import Gauss_Seidel_Method
 from utils.utils import read_matrix, read_vector
 import configparser
 
@@ -14,7 +14,7 @@ icod_map = {
 }
 
 def run():
-    with open("task01/input.txt", "r") as file:
+    with open("P1/task01/input.txt", "r") as file:
         parser_string = '[INPUT]\n' + file.read()
     parser = configparser.ConfigParser()
     parser.read_string(parser_string)
@@ -31,8 +31,8 @@ def run():
         raise Exception("ERROR: Arquivo de input com erro.")
 
     ChoosenMethod = icod_map[icod]
-    matrix_A = read_matrix("task01/"+input_path_A)
-    vector_B = read_vector("task01/"+input_path_B)
+    matrix_A = read_matrix("P1/task01/"+input_path_A)
+    vector_B = read_vector("P1/task01/"+input_path_B)
 
     if(not issubclass(ChoosenMethod, IterativeMethod)):
         maxTolerance = None
@@ -46,13 +46,13 @@ def run():
     )
     solution = methodClass.solve()
     
-    with open("task01/"+output_path, "w") as file:
+    with open("P1/task01/"+output_path, "w") as file:
         file.write(f"Solução(X) do sistema: {solution['vector']}\n")
         file.write(f"Determinante: {solution.get('determinant', 'N/A')}\n")
         file.write(f"Número de iterações para convergência: {solution.get('numberofIterations', 'N/A')}\n")
         file.write(f"Histórico da variação do erro: {solution.get('residues', 'N/A')}\n")
     
-    print("Task01 executada com sucesso. Saída disponível em: task01/"+output_path)
+    print("P1 - Task01 executada com sucesso. Saída disponível em: P1/task01/"+output_path)
 
     
     

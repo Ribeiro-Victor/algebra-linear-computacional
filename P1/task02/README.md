@@ -1,4 +1,4 @@
-# Task 02
+# P1 - Task 02
 
 A segunda task é um programa para realizar o cálculo de autovalores e autovetores de uma matriz e calcular o determinante da matriz. Nesse programa, é possível encontrar a solução a partir dos seguintes métodos de solução:
 
@@ -28,5 +28,5 @@ output = output.txt
 
 ## Executando o programa
 
-Para executar o programa, basta realizar o procedimento descrito na [página inicial](../README.md) do projeto.
+Para executar o programa, basta realizar o procedimento descrito na [página inicial](../../README.md) do projeto.
 

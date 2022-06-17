@@ -1,5 +1,5 @@
 from decimal import DivisionByZero
-from task01.method import Method
+from P1.task01.method import Method
 from utils.utils import backward_substitution, forward_substitution, print_matrix
 
 class LU_Method(Method):

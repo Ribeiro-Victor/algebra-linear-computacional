@@ -1,7 +1,7 @@
-from task01.method import IterativeMethod
+from P1.task01.method import IterativeMethod
 from utils.utils import diagonally_dominant, vector_euclidean_norm, vector_subtraction
 
-class Jacobi_Method(IterativeMethod):
+class Gauss_Seidel_Method(IterativeMethod):
     def solve(self):
         if(not diagonally_dominant(self.matrix_A)):
             raise Exception("ERROR: Solução não converge, matriz não é diagonal dominante.")
@@ -19,8 +19,10 @@ class Jacobi_Method(IterativeMethod):
                 summation = 0.0
 
                 for j in range(self.order):
-                    if(j!=i):
+                    if(j>i):
                         summation += (-1)*self.matrix_A[i][j]*initial_solution[j]
+                    if(j<i):
+                        summation += (-1)*self.matrix_A[i][j]*next_solution[j]
         
                 next_solution[i] = (self.vector_B[i] + summation)/self.matrix_A[i][i]
 
