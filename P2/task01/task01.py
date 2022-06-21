@@ -1,6 +1,4 @@
-import sys
 import numpy as np
-from sqlalchemy import func
 
 class NL_System:
 
@@ -81,10 +79,10 @@ class NL_System:
 
     def prova_real(self, solution):
         if(not isinstance(solution, str)):
-            teorico = self.get_func_value(solution)
-            f1 = teorico[0] + 1
-            f2 = teorico[1] + self.theta[0]
-            f3 = teorico[2] + self.theta[1]
+            experimental = self.get_func_value(solution)
+            f1 = experimental[0] + 1
+            f2 = experimental[1] + self.theta[0]
+            f3 = experimental[2] + self.theta[1]
             print(f'f1 -> 1.0 ~ {f1}')
             print(f'f2 -> {self.theta[0]} ~ {f2}')
             print(f'f3 -> {self.theta[1]} ~ {f3}')
