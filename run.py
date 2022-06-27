@@ -2,12 +2,16 @@ from P1.task01.task01 import run as run_taskp1_01
 from P1.task02.task02 import run as run_taskp1_02
 from P1.task03.task03 import run as run_taskp1_03
 from P2.task01.task01 import run as run_taskp2_01
+from P2.task02.task02 import run as run_taskp2_02
+from P2.task03.task03 import run as run_taskp2_03
 
 task_map = {
     11: run_taskp1_01,
     12: run_taskp1_02,
     13: run_taskp1_03,
-    21: run_taskp2_01
+    21: run_taskp2_01,
+    22: run_taskp2_02,
+    23: run_taskp2_03
 }
 
 if __name__ == '__main__':
