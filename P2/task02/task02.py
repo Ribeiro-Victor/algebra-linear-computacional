@@ -48,7 +48,7 @@ def run():
         buffer += f'a = {a}\tb = {b}\n'
         buffer += f'num de pontos de integracao = {n}\n'
         buffer += '-'*22 + 'Solucao' + '-'*22 + '\n'
-        buffer += f'Integral por Quadratura Polinomial:\t\t{solution.polynomial_quadrature(a, b, n)}\n'
+        buffer += f'Integral por Quadratura Polinomial:\t{solution.polynomial_quadrature(a, b, n)}\n'
         buffer += f'Integral por Quadratura Gauss-Legendre:\t{solution.legendre_gauss_quadrature(a, b, n)}\n'
 
     elif(icod == 3):
@@ -56,15 +56,15 @@ def run():
         buffer += f'a = {a}\tdelta_x = {delta_x1}\n'
         buffer += '-'*22 + 'Solucao' + '-'*22 + '\n'
         #buffer += f'Derivada analítica:\t\t {Function_Root(c1, c2, c3, c4).get_derivative_value(a)}\n'
-        buffer += f'Diferenca finita passo a frente:\t{solution.forward_finite_difference(a, delta_x1)}\n'
-        buffer += f'Diferenca finita passo atras:\t\t{solution.backward_finite_difference(a, delta_x1)}\n'
-        buffer += f'Diferenca finita passo central:\t\t{solution.central_finite_difference(a, delta_x1)}\n'
+        buffer += f'Derivada por Diferenca finita passo a frente:\t{solution.forward_finite_difference(a, delta_x1)}\n'
+        buffer += f'Derivada por Diferenca finita passo atras:\t\t{solution.backward_finite_difference(a, delta_x1)}\n'
+        buffer += f'Derivada por Diferenca finita passo central:\t\t{solution.central_finite_difference(a, delta_x1)}\n'
     
     else:
         solution = Derivative(c1, c2, c3, c4)
         buffer += f'a = {a}\tdelta_x1 = {delta_x1}\tdelta_x2 = {delta_x2}\n'
         buffer += '-'*22 + 'Solucao' + '-'*22 + '\n'
-        buffer += f'Extrapolacao de Richard: {solution.richard_extrapolation(a, delta_x1, delta_x2)}\n'
+        buffer += f'Derivada por Extrapolacao de Richard: {solution.richard_extrapolation(a, delta_x1, delta_x2)}\n'
 
     with open("P2/task02/"+output_path, "w") as file:
         file.write(buffer)

@@ -67,11 +67,22 @@ def run():
     ROXO = '#6557D2'
 
     print("[INFO] Exibindo gráfico...")
-    plt.plot(t_vector, s_vector, color=VERDE, label='Posicao(y)')
-    plt.plot(t_vector, v_vector, color=AZUL, label='Velocidade(y\')')
-    plt.plot(t_vector, a_vector, color=VERMELHO, label='Aceleracao(y\'\')')
-    plt.legend(loc="upper left")
+    fig, axs = plt.subplots(3)
+    axs[0].plot(t_vector, s_vector, color=AZUL, label='Posicao')
+    axs[0].set_title('Deslocamento')
+    axs[0].set(xlabel='tempo(t)', ylabel='Deslocamento(y)')
+
+    axs[1].plot(t_vector, v_vector, color=VERMELHO, label='Velocidade')
+    axs[1].set_title('Velocidade')
+    axs[1].set(xlabel='tempo(t)', ylabel='Velocidade(y\')')
+
+    axs[2].plot(t_vector, a_vector, color=VERDE, label='Aceleracao(y\'\')')
+    axs[2].set_title('Aceleracao')
+    axs[2].set(xlabel='tempo(t)', ylabel='Aceleracao(y\'\')')
+
+    for ax in axs.flat:
+        ax.label_outer()
+        ax.grid(True)
+
     plt.grid(True)
-    plt.ylabel('y(t) | y\'(t) | y\'\'(t)')
-    plt.xlabel('tempo(t)')
     plt.show()
